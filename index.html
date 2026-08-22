@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhinav S Pillai | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #0b0f1a; color: #e2e8f0; scroll-behavior: smooth; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+        .gradient-text { background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .project-card { transition: all 0.3s ease; border: 1px solid #1e293b; background: rgba(30, 41, 59, 0.4); }
+        .project-card:hover { transform: translateY(-8px); border-color: #38bdf8; box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.2); }
+        .demo-box { display: none; margin-top: 15px; padding: 15px; border-radius: 8px; background: #0f172a; border: 1px dashed #334155; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-extrabold tracking-tighter">ABHINAV<span class="text-sky-400">.</span></div>
+            <div class="space-x-8 hidden md:flex text-xs font-bold uppercase tracking-widest">
+                <a href="#home" class="hover:text-sky-400 transition">Home</a>
+                <a href="#about" class="hover:text-sky-400 transition">Education</a>
+                <a href="#projects" class="hover:text-sky-400 transition">Projects</a>
+                <a href="#contact" class="hover:text-sky-400 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <p class="text-sky-400 font-mono mb-4">Hello, my name is</p>
+            <h1 class="text-6xl md:text-8xl font-extrabold mb-6 text-white">Abhinav S Pillai.</h1>
+            <h2 class="text-4xl md:text-6xl font-bold text-slate-400 mb-8 leading-tight">Aspiring Product Manager & Developer.</h2>
+            <p class="text-lg text-slate-400 max-w-xl mb-12">
+                First-year CSE student at Amity University. I bridge the gap between user research, product strategy, and functional code.
+            </p>
+            <div class="flex gap-6">
+                <a href="#projects" class="px-8 py-4 bg-sky-500 text-slate-900 font-bold rounded hover:bg-sky-400 transition">Explore Projects</a>
+                <a href="https://github.com/abhinavspillai7-web" target="_blank" class="px-8 py-4 border border-sky-500 text-sky-400 font-bold rounded hover:bg-sky-500/10 transition">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="about" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-3xl font-bold mb-12 flex items-center gap-4">
+                <span class="text-sky-400 font-mono text-xl">01.</span> Academic Foundation
+            </h3>
+            <div class="glass p-8 rounded-xl">
+                <div class="flex flex-col md:flex-row justify-between mb-6">
+                    <div>
+                        <h4 class="text-2xl font-bold text-white">Amity University</h4>
+                        <p class="text-sky-400 text-lg">B.Tech in Computer Science & Engineering</p>
+                    </div>
+                    <div class="text-slate-400 font-mono mt-2 md:mt-0">2025 — 2029</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-slate-300">
+                    <div>
+                        <p class="font-bold mb-2 text-white">Core Focus Areas:</p>
+                        <ul class="space-y-1 text-sm">
+                            <li><i class="fas fa-check text-sky-400 mr-2"></i> Computer Science Fundamentals</li>
+                            <li><i class="fas fa-check text-sky-400 mr-2"></i> Python & C++ Programming</li>
+                            <li><i class="fas fa-check text-sky-400 mr-2"></i> Mathematics for AI</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="font-bold mb-2 text-white">Business & Product:</p>
+                        <ul class="space-y-1 text-sm">
+                            <li><i class="fas fa-check text-sky-400 mr-2"></i> Marketing Fundamentals</li>
+                            <li><i class="fas fa-check text-sky-400 mr-2"></i> Product Strategy & Research</li>
+                            <li><i class="fas fa-check text-sky-400 mr-2"></i> User Workflow Design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-32 px-6 bg-slate-900/30">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-3xl font-bold mb-16 flex items-center gap-4">
+                <span class="text-sky-400 font-mono text-xl">02.</span> Resume Projects (Prototypes)
+            </h3>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Project 1: AI/ML -->
+                <div class="project-card p-8 rounded-xl">
+                    <div class="flex justify-between items-start mb-6">
+                        <i class="fas fa-brain text-4xl text-sky-400"></i>
+                        <i class="fab fa-github text-slate-400 text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 text-white">Sentiment AI Dashboard</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        A real-time sentiment analysis tool for customer feedback. Analyzes text input to categorize user emotion.
+                    </p>
+                    <button onclick="toggleDemo('demo1')" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">Test AI Logic ↓</button>
+                    
+                    <div id="demo1" class="demo-box">
+                        <input id="sentInput" oninput="runSentiment()" type="text" placeholder="Type a review (e.g. 'This is great')..." class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-xs mb-2 text-white">
+                        <div id="sentResult" class="text-center font-bold text-xs py-2 rounded bg-slate-800">Result: Waiting...</div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Frontend -->
+                <div class="project-card p-8 rounded-xl">
+                    <div class="flex justify-between items-start mb-6">
+                        <i class="fas fa-shopping-cart text-4xl text-sky-400"></i>
+                        <i class="fab fa-github text-slate-400 text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 text-white">LocalKart Marketplace</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        A commerce platform connecting users to local shops. Focuses on UX/UI and efficient search discovery.
+                    </p>
+                    <button onclick="toggleDemo('demo2')" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">Browse Shops ↓</button>
+                    
+                    <div id="demo2" class="demo-box">
+                        <div class="flex gap-2 mb-2">
+                            <button onclick="filterKart('All')" class="bg-slate-700 px-2 py-1 rounded text-[10px]">All</button>
+                            <button onclick="filterKart('Electronics')" class="bg-slate-700 px-2 py-1 rounded text-[10px]">Tech</button>
+                            <button onclick="filterKart('Food')" class="bg-slate-700 px-2 py-1 rounded text-[10px]">Food</button>
+                        </div>
+                        <div id="kartList" class="text-[10px] space-y-1">
+                            <div class="p-1 border-b border-slate-800">Shop A - Electronics</div>
+                            <div class="p-1 border-b border-slate-800">Shop B - Food</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Problem Solving -->
+                <div class="project-card p-8 rounded-xl">
+                    <div class="flex justify-between items-start mb-6">
+                        <i class="fas fa-hospital-user text-4xl text-sky-400"></i>
+                        <i class="fab fa-github text-slate-400 text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 text-white">Hospital Resource Manager</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Automated record management system designed to reduce manual errors in patient intake and resource allocation.
+                    </p>
+                    <button onclick="toggleDemo('demo3')" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">Manage Beds ↓</button>
+                    
+                    <div id="demo3" class="demo-box text-center">
+                        <div id="bedCount" class="text-2xl font-bold text-sky-400 mb-1">15</div>
+                        <div class="text-[10px] uppercase text-slate-500 mb-3">Available Hospital Beds</div>
+                        <button onclick="bookBed()" class="bg-sky-500/20 text-sky-400 px-4 py-2 rounded text-[10px] font-bold hover:bg-sky-500/40 transition">Admit Patient</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6">
+        <div class="max-w-2xl mx-auto text-center">
+            <h3 class="text-sky-400 font-mono mb-4 text-sm tracking-widest">03. CONTACT</h3>
+            <h2 class="text-5xl font-bold mb-8 text-white">Let's Connect.</h2>
+            <p class="text-slate-400 mb-12">
+                I am actively seeking internship opportunities in **Frontend Development** and **AI/ML**. Reach out if you'd like to collaborate!
+            </p>
+            <div class="space-y-4 mb-12">
+                <a href="mailto:abhinavspillai7@gmail.com" class="block text-2xl font-bold text-white hover:text-sky-400 transition underline decoration-sky-500/30">abhinavspillai7@gmail.com</a>
+                <p class="text-slate-500 font-mono text-lg">+91 8150004710</p>
+            </div>
+            <a href="mailto:abhinavspillai7@gmail.com" class="px-12 py-5 border border-sky-500 text-sky-400 font-bold rounded uppercase tracking-widest hover:bg-sky-500/10 transition">Send a Message</a>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center font-mono text-[10px] text-slate-600 border-t border-slate-900">
+        Built with Tailwind CSS & JavaScript | Abhinav S Pillai &copy; 2024
+    </footer>
+
+    <script>
+        // Toggle Demo Boxes
+        function toggleDemo(id) {
+            const el = document.getElementById(id);
+            el.style.display = el.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Logic for Project 1: AI Sentiment
+        function runSentiment() {
+            const val = document.getElementById('sentInput').value.toLowerCase();
+            const res = document.getElementById('sentResult');
+            if(!val) { res.innerText = "Result: Waiting..."; res.className = "text-center font-bold text-xs py-2 rounded bg-slate-800"; return; }
+            
+            const pos = ['good', 'great', 'love', 'amazing', 'easy', 'smart', 'best'];
+            const neg = ['bad', 'slow', 'hard', 'broken', 'worst', 'poor', 'fail'];
+            
+            let score = 0;
+            pos.forEach(w => { if(val.includes(w)) score++ });
+            neg.forEach(w => { if(val.includes(w)) score-- });
+
+            if(score > 0) { res.innerText = "RESULT: POSITIVE 😊"; res.className = "text-center font-bold text-xs py-2 rounded bg-green-500/20 text-green-400"; }
+            else if(score < 0) { res.innerText = "RESULT: NEGATIVE 😡"; res.className = "text-center font-bold text-xs py-2 rounded bg-red-500/20 text-red-400"; }
+            else { res.innerText = "RESULT: NEUTRAL 😐"; res.className = "text-center font-bold text-xs py-2 rounded bg-slate-700 text-slate-300"; }
+        }
+
+        // Logic for Project 2: Marketplace
+        const shops = [
+            {n: "Bangalore Tech Hub", c: "Electronics"},
+            {n: "Healthy Eats", c: "Food"},
+            {n: "Smart Gizmos", c: "Electronics"},
+            {n: "Spice Garden", c: "Food"}
+        ];
+        function filterKart(cat) {
+            const list = document.getElementById('kartList');
+            const filtered = cat === 'All' ? shops : shops.filter(i => i.c === cat);
+            list.innerHTML = filtered.map(i => `<div class="p-1 border-b border-slate-800 text-white">${i.n} - <span class="text-sky-400">${i.c}</span></div>`).join('');
+        }
+
+        // Logic for Project 3: Hospital
+        let beds = 15;
+        function bookBed() {
+            if(beds > 0) {
+                beds--;
+                document.getElementById('bedCount').innerText = beds;
+            } else {
+                alert("Hospital is currently at full capacity!");
+            }
+        }
+    </script>
+</body>
+</html>
