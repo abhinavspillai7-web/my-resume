@@ -10,10 +10,17 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #0b0f1a; color: #e2e8f0; scroll-behavior: smooth; }
         .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
-        .gradient-text { background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .project-card { transition: all 0.3s ease; border: 1px solid #1e293b; background: rgba(30, 41, 59, 0.4); }
         .project-card:hover { transform: translateY(-8px); border-color: #38bdf8; box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.2); }
         .demo-box { display: none; margin-top: 15px; padding: 15px; border-radius: 8px; background: #0f172a; border: 1px dashed #334155; }
+        
+        /* BFS Grid Styling */
+        .bfs-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 2px; width: 200px; margin: 0 auto; }
+        .cell { width: 18px; height: 18px; background: #1e293b; border-radius: 2px; cursor: pointer; transition: 0.2s; }
+        .cell.wall { background: #ef4444; }
+        .cell.start { background: #38bdf8; }
+        .cell.goal { background: #10b981; }
+        .cell.path { background: #facc15; box-shadow: 0 0 8px #facc15; }
     </style>
 </head>
 <body>
@@ -38,7 +45,7 @@
             <h1 class="text-6xl md:text-8xl font-extrabold mb-6 text-white">Abhinav S Pillai.</h1>
             <h2 class="text-4xl md:text-6xl font-bold text-slate-400 mb-8 leading-tight">Aspiring Product Manager & Developer.</h2>
             <p class="text-lg text-slate-400 max-w-xl mb-12">
-                First-year CSE student at Amity University. I bridge the gap between user research, product strategy, and functional code.
+                First-year CSE student at Amity University. I specialize in algorithmic problem solving and building functional web applications.
             </p>
             <div class="flex gap-6">
                 <a href="#projects" class="px-8 py-4 bg-sky-500 text-slate-900 font-bold rounded hover:bg-sky-400 transition">Explore Projects</a>
@@ -47,111 +54,69 @@
         </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="about" class="py-32 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h3 class="text-3xl font-bold mb-12 flex items-center gap-4">
-                <span class="text-sky-400 font-mono text-xl">01.</span> Academic Foundation
-            </h3>
-            <div class="glass p-8 rounded-xl">
-                <div class="flex flex-col md:flex-row justify-between mb-6">
-                    <div>
-                        <h4 class="text-2xl font-bold text-white">Amity University</h4>
-                        <p class="text-sky-400 text-lg">B.Tech in Computer Science & Engineering</p>
-                    </div>
-                    <div class="text-slate-400 font-mono mt-2 md:mt-0">2025 — 2029</div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-slate-300">
-                    <div>
-                        <p class="font-bold mb-2 text-white">Core Focus Areas:</p>
-                        <ul class="space-y-1 text-sm">
-                            <li><i class="fas fa-check text-sky-400 mr-2"></i> Computer Science Fundamentals</li>
-                            <li><i class="fas fa-check text-sky-400 mr-2"></i> Python & C++ Programming</li>
-                            <li><i class="fas fa-check text-sky-400 mr-2"></i> Mathematics for AI</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p class="font-bold mb-2 text-white">Business & Product:</p>
-                        <ul class="space-y-1 text-sm">
-                            <li><i class="fas fa-check text-sky-400 mr-2"></i> Marketing Fundamentals</li>
-                            <li><i class="fas fa-check text-sky-400 mr-2"></i> Product Strategy & Research</li>
-                            <li><i class="fas fa-check text-sky-400 mr-2"></i> User Workflow Design</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Projects Section -->
     <section id="projects" class="py-32 px-6 bg-slate-900/30">
         <div class="max-w-6xl mx-auto">
             <h3 class="text-3xl font-bold mb-16 flex items-center gap-4">
-                <span class="text-sky-400 font-mono text-xl">02.</span> Resume Projects (Prototypes)
+                <span class="text-sky-400 font-mono text-xl">01.</span> Technical Projects
             </h3>
 
             <div class="grid lg:grid-cols-3 gap-8">
-                <!-- Project 1: AI/ML -->
+                
+                <!-- NEW PROJECT: BFS PATHFINDER -->
+                <div class="project-card p-8 rounded-xl">
+                    <div class="flex justify-between items-start mb-6">
+                        <i class="fas fa-route text-4xl text-sky-400"></i>
+                        <i class="fab fa-github text-slate-400 text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 text-white">BFS Grid Pathfinder</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Implementation of the Breadth-First Search algorithm to find the shortest path on a 10x10 grid while avoiding user-defined obstacles.
+                    </p>
+                    <button onclick="toggleDemo('demo-bfs')" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">Visualize Algorithm ↓</button>
+                    
+                    <div id="demo-bfs" class="demo-box">
+                        <p class="text-[10px] text-slate-500 mb-2 text-center underline">Click cells to toggle walls (#)</p>
+                        <div id="grid-container" class="bfs-grid mb-4"></div>
+                        <div class="flex gap-2">
+                            <button onclick="runBFS()" class="w-full bg-sky-500/20 text-sky-400 px-2 py-1 rounded text-[10px] font-bold hover:bg-sky-500/40">Find Path</button>
+                            <button onclick="resetBFS()" class="w-full bg-slate-700 text-white px-2 py-1 rounded text-[10px] font-bold hover:bg-slate-600">Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sentiment AI -->
                 <div class="project-card p-8 rounded-xl">
                     <div class="flex justify-between items-start mb-6">
                         <i class="fas fa-brain text-4xl text-sky-400"></i>
-                        <i class="fab fa-github text-slate-400 text-xl"></i>
                     </div>
                     <h4 class="text-xl font-bold mb-4 text-white">Sentiment AI Dashboard</h4>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">
                         A real-time sentiment analysis tool for customer feedback. Analyzes text input to categorize user emotion.
                     </p>
                     <button onclick="toggleDemo('demo1')" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">Test AI Logic ↓</button>
-                    
                     <div id="demo1" class="demo-box">
-                        <input id="sentInput" oninput="runSentiment()" type="text" placeholder="Type a review (e.g. 'This is great')..." class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-xs mb-2 text-white">
+                        <input id="sentInput" oninput="runSentiment()" type="text" placeholder="Type a review..." class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-xs mb-2 text-white">
                         <div id="sentResult" class="text-center font-bold text-xs py-2 rounded bg-slate-800">Result: Waiting...</div>
                     </div>
                 </div>
 
-                <!-- Project 2: Frontend -->
-                <div class="project-card p-8 rounded-xl">
-                    <div class="flex justify-between items-start mb-6">
-                        <i class="fas fa-shopping-cart text-4xl text-sky-400"></i>
-                        <i class="fab fa-github text-slate-400 text-xl"></i>
-                    </div>
-                    <h4 class="text-xl font-bold mb-4 text-white">LocalKart Marketplace</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        A commerce platform connecting users to local shops. Focuses on UX/UI and efficient search discovery.
-                    </p>
-                    <button onclick="toggleDemo('demo2')" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">Browse Shops ↓</button>
-                    
-                    <div id="demo2" class="demo-box">
-                        <div class="flex gap-2 mb-2">
-                            <button onclick="filterKart('All')" class="bg-slate-700 px-2 py-1 rounded text-[10px]">All</button>
-                            <button onclick="filterKart('Electronics')" class="bg-slate-700 px-2 py-1 rounded text-[10px]">Tech</button>
-                            <button onclick="filterKart('Food')" class="bg-slate-700 px-2 py-1 rounded text-[10px]">Food</button>
-                        </div>
-                        <div id="kartList" class="text-[10px] space-y-1">
-                            <div class="p-1 border-b border-slate-800">Shop A - Electronics</div>
-                            <div class="p-1 border-b border-slate-800">Shop B - Food</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: Problem Solving -->
+                <!-- Hospital Manager -->
                 <div class="project-card p-8 rounded-xl">
                     <div class="flex justify-between items-start mb-6">
                         <i class="fas fa-hospital-user text-4xl text-sky-400"></i>
-                        <i class="fab fa-github text-slate-400 text-xl"></i>
                     </div>
                     <h4 class="text-xl font-bold mb-4 text-white">Hospital Resource Manager</h4>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">
                         Automated record management system designed to reduce manual errors in patient intake and resource allocation.
                     </p>
                     <button onclick="toggleDemo('demo3')" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">Manage Beds ↓</button>
-                    
                     <div id="demo3" class="demo-box text-center">
                         <div id="bedCount" class="text-2xl font-bold text-sky-400 mb-1">15</div>
-                        <div class="text-[10px] uppercase text-slate-500 mb-3">Available Hospital Beds</div>
-                        <button onclick="bookBed()" class="bg-sky-500/20 text-sky-400 px-4 py-2 rounded text-[10px] font-bold hover:bg-sky-500/40 transition">Admit Patient</button>
+                        <button onclick="bookBed()" class="bg-sky-500/20 text-sky-400 px-4 py-2 rounded text-[10px] font-bold hover:bg-sky-500/40">Admit Patient</button>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -159,70 +124,123 @@
     <!-- Contact Section -->
     <section id="contact" class="py-32 px-6">
         <div class="max-w-2xl mx-auto text-center">
-            <h3 class="text-sky-400 font-mono mb-4 text-sm tracking-widest">03. CONTACT</h3>
             <h2 class="text-5xl font-bold mb-8 text-white">Let's Connect.</h2>
-            <p class="text-slate-400 mb-12">
-                I am actively seeking internship opportunities in **Frontend Development** and **AI/ML**. Reach out if you'd like to collaborate!
-            </p>
-            <div class="space-y-4 mb-12">
-                <a href="mailto:abhinavspillai7@gmail.com" class="block text-2xl font-bold text-white hover:text-sky-400 transition underline decoration-sky-500/30">abhinavspillai7@gmail.com</a>
-                <p class="text-slate-500 font-mono text-lg">+91 8150004710</p>
-            </div>
-            <a href="mailto:abhinavspillai7@gmail.com" class="px-12 py-5 border border-sky-500 text-sky-400 font-bold rounded uppercase tracking-widest hover:bg-sky-500/10 transition">Send a Message</a>
+            <a href="mailto:abhinavspillai7@gmail.com" class="block text-2xl font-bold text-white hover:text-sky-400 transition underline decoration-sky-500/30">abhinavspillai7@gmail.com</a>
         </div>
     </section>
 
-    <footer class="py-12 text-center font-mono text-[10px] text-slate-600 border-t border-slate-900">
-        Built with Tailwind CSS & JavaScript | Abhinav S Pillai &copy; 2024
-    </footer>
-
     <script>
-        // Toggle Demo Boxes
         function toggleDemo(id) {
             const el = document.getElementById(id);
             el.style.display = el.style.display === 'block' ? 'none' : 'block';
         }
 
-        // Logic for Project 1: AI Sentiment
+        /* --- BFS PROJECT LOGIC (Translated from your grid.py) --- */
+        const gridSize = 10;
+        let startNode = [0, 0];
+        let goalNode = [9, 9];
+        let walls = new Set();
+
+        function initGrid() {
+            const container = document.getElementById('grid-container');
+            container.innerHTML = '';
+            for (let r = 0; r < gridSize; r++) {
+                for (let c = 0; c < gridSize; c++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    cell.id = `cell-${r}-${c}`;
+                    if (r === startNode[0] && c === startNode[1]) cell.classList.add('start');
+                    if (r === goalNode[0] && c === goalNode[1]) cell.classList.add('goal');
+                    
+                    cell.onclick = () => {
+                        const coord = `${r},${c}`;
+                        if ((r === startNode[0] && c === startNode[1]) || (r === goalNode[0] && c === goalNode[1])) return;
+                        if (walls.has(coord)) {
+                            walls.delete(coord);
+                            cell.classList.remove('wall');
+                        } else {
+                            walls.add(coord);
+                            cell.classList.add('wall');
+                        }
+                    };
+                    container.appendChild(cell);
+                }
+            }
+        }
+
+        function runBFS() {
+            // Clean previous path
+            document.querySelectorAll('.cell.path').forEach(c => c.classList.remove('path'));
+            
+            let queue = [startNode];
+            let visited = new Set();
+            visited.add(`${startNode[0]},${startNode[1]}`);
+            let cameFrom = {};
+
+            let reached = false;
+
+            while (queue.length > 0) {
+                let current = queue.shift();
+                if (current[0] === goalNode[0] && current[1] === goalNode[1]) {
+                    reached = true;
+                    break;
+                }
+
+                const neighbors = [
+                    [current[0]-1, current[1]], [current[0]+1, current[1]],
+                    [current[0], current[1]-1], [current[0], current[1]+1]
+                ];
+
+                for (let [nr, nc] of neighbors) {
+                    let key = `${nr},${nc}`;
+                    if (nr >= 0 && nr < gridSize && nc >= 0 && nc < gridSize && !walls.has(key) && !visited.has(key)) {
+                        visited.add(key);
+                        cameFrom[key] = current;
+                        queue.push([nr, nc]);
+                    }
+                }
+            }
+
+            if (reached) {
+                let curr = goalNode;
+                while (curr[0] !== startNode[0] || curr[1] !== startNode[1]) {
+                    let key = `${curr[0]},${curr[1]}`;
+                    if (key !== `${goalNode[0]},${goalNode[1]}`) {
+                        document.getElementById(`cell-${curr[0]}-${curr[1]}`).classList.add('path');
+                    }
+                    curr = cameFrom[key];
+                }
+            } else {
+                alert("No path found!");
+            }
+        }
+
+        function resetBFS() {
+            walls.clear();
+            initGrid();
+        }
+
+        // Initialize grid on load
+        initGrid();
+
+        /* --- OTHER PROJECT LOGIC --- */
         function runSentiment() {
             const val = document.getElementById('sentInput').value.toLowerCase();
             const res = document.getElementById('sentResult');
-            if(!val) { res.innerText = "Result: Waiting..."; res.className = "text-center font-bold text-xs py-2 rounded bg-slate-800"; return; }
-            
-            const pos = ['good', 'great', 'love', 'amazing', 'easy', 'smart', 'best'];
-            const neg = ['bad', 'slow', 'hard', 'broken', 'worst', 'poor', 'fail'];
-            
+            const pos = ['good', 'great', 'love', 'easy'];
+            const neg = ['bad', 'slow', 'hard', 'fail'];
             let score = 0;
             pos.forEach(w => { if(val.includes(w)) score++ });
             neg.forEach(w => { if(val.includes(w)) score-- });
-
-            if(score > 0) { res.innerText = "RESULT: POSITIVE 😊"; res.className = "text-center font-bold text-xs py-2 rounded bg-green-500/20 text-green-400"; }
-            else if(score < 0) { res.innerText = "RESULT: NEGATIVE 😡"; res.className = "text-center font-bold text-xs py-2 rounded bg-red-500/20 text-red-400"; }
-            else { res.innerText = "RESULT: NEUTRAL 😐"; res.className = "text-center font-bold text-xs py-2 rounded bg-slate-700 text-slate-300"; }
+            if(score > 0) { res.innerText = "POSITIVE 😊"; res.className = "text-center font-bold text-xs py-2 rounded bg-green-500/20 text-green-400"; }
+            else if(score < 0) { res.innerText = "NEGATIVE 😡"; res.className = "text-center font-bold text-xs py-2 rounded bg-red-500/20 text-red-400"; }
+            else { res.innerText = "NEUTRAL 😐"; res.className = "text-center font-bold text-xs py-2 rounded bg-slate-700 text-slate-300"; }
         }
 
-        // Logic for Project 2: Marketplace
-        const shops = [
-            {n: "Bangalore Tech Hub", c: "Electronics"},
-            {n: "Healthy Eats", c: "Food"},
-            {n: "Smart Gizmos", c: "Electronics"},
-            {n: "Spice Garden", c: "Food"}
-        ];
-        function filterKart(cat) {
-            const list = document.getElementById('kartList');
-            const filtered = cat === 'All' ? shops : shops.filter(i => i.c === cat);
-            list.innerHTML = filtered.map(i => `<div class="p-1 border-b border-slate-800 text-white">${i.n} - <span class="text-sky-400">${i.c}</span></div>`).join('');
-        }
-
-        // Logic for Project 3: Hospital
         let beds = 15;
         function bookBed() {
-            if(beds > 0) {
-                beds--;
-                document.getElementById('bedCount').innerText = beds;
-            } else {
-                alert("Hospital is currently at full capacity!");
-            }
+            if(beds > 0) { beds--; document.getElementById('bedCount').innerText = beds; }
+            else { alert("Full capacity!"); }
         }
     </script>
 </body>
