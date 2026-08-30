@@ -15,20 +15,22 @@
         .demo-box { display: none; margin-top: 15px; padding: 15px; border-radius: 8px; background: #0f172a; border: 1px dashed #334155; }
         
         /* BFS Grid Styling */
-        .bfs-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 2px; width: 200px; margin: 0 auto; }
-        .cell { width: 18px; height: 18px; background: #1e293b; border-radius: 2px; cursor: pointer; transition: 0.2s; }
+        .bfs-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 2px; width: 220px; margin: 0 auto; }
+        .cell { width: 20px; height: 20px; background: #1e293b; border-radius: 2px; cursor: pointer; transition: 0.2s; }
         .cell.wall { background: #ef4444; }
-        .cell.start { background: #38bdf8; }
-        .cell.goal { background: #10b981; }
+        .cell.start { background: #38bdf8; position: relative; }
+        .cell.start::after { content: 'S'; color: white; font-size: 10px; position: absolute; left: 5px; top: 1px; }
+        .cell.goal { background: #10b981; position: relative; }
+        .cell.goal::after { content: 'G'; color: white; font-size: 10px; position: absolute; left: 5px; top: 1px; }
         .cell.path { background: #facc15; box-shadow: 0 0 8px #facc15; }
     </style>
 </head>
-<body>
+<body class="selection:bg-sky-500/30">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-xl font-extrabold tracking-tighter">ABHINAV<span class="text-sky-400">.</span></div>
+            <div class="text-xl font-extrabold tracking-tighter uppercase">Abhinav S Pillai<span class="text-sky-400">.</span></div>
             <div class="space-x-8 hidden md:flex text-xs font-bold uppercase tracking-widest">
                 <a href="#home" class="hover:text-sky-400 transition">Home</a>
                 <a href="#about" class="hover:text-sky-400 transition">Education</a>
@@ -41,15 +43,51 @@
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center pt-20 px-6">
         <div class="max-w-4xl mx-auto">
-            <p class="text-sky-400 font-mono mb-4">Hello, my name is</p>
-            <h1 class="text-6xl md:text-8xl font-extrabold mb-6 text-white">Abhinav S Pillai.</h1>
-            <h2 class="text-4xl md:text-6xl font-bold text-slate-400 mb-8 leading-tight">Aspiring Product Manager & Developer.</h2>
+            <p class="text-sky-400 font-mono mb-4 tracking-widest">CSE STUDENT & ASPIRING PRODUCT MANAGER</p>
+            <h1 class="text-6xl md:text-8xl font-extrabold mb-6 text-white tracking-tighter">Abhinav S Pillai.</h1>
+            <h2 class="text-3xl md:text-5xl font-bold text-slate-400 mb-8 leading-tight">Bridging Technology & Business Solutions.</h2>
             <p class="text-lg text-slate-400 max-w-xl mb-12">
-                First-year CSE student at Amity University. I specialize in algorithmic problem solving and building functional web applications.
+                Based in Bangalore, India. I am a first-year Computer Science student at Amity University focused on Frontend Development, AI/ML, and Product Strategy.
             </p>
             <div class="flex gap-6">
-                <a href="#projects" class="px-8 py-4 bg-sky-500 text-slate-900 font-bold rounded hover:bg-sky-400 transition">Explore Projects</a>
-                <a href="https://github.com/abhinavspillai7-web" target="_blank" class="px-8 py-4 border border-sky-500 text-sky-400 font-bold rounded hover:bg-sky-500/10 transition">GitHub</a>
+                <a href="#projects" class="px-8 py-4 bg-sky-500 text-slate-900 font-bold rounded hover:bg-sky-400 transition">View Projects</a>
+                <a href="https://github.com/abhinavspillai7-web" target="_blank" class="px-8 py-4 border border-sky-500 text-sky-400 font-bold rounded hover:bg-sky-500/10 transition">GitHub Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="about" class="py-32 px-6 bg-slate-900/20">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-3xl font-bold mb-12 flex items-center gap-4">
+                <span class="text-sky-400 font-mono text-xl text-sky-400">01.</span> Education
+            </h3>
+            <div class="glass p-8 rounded-xl border border-slate-800">
+                <div class="flex flex-col md:flex-row justify-between mb-8">
+                    <div>
+                        <h4 class="text-2xl font-bold text-white">Amity University</h4>
+                        <p class="text-sky-400 text-lg">B.Tech in Computer Science & Engineering</p>
+                    </div>
+                    <div class="text-slate-400 font-mono mt-2 md:mt-0 px-3 py-1 bg-slate-800 rounded h-fit">2025 — 2029</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-300">
+                    <div>
+                        <p class="font-bold mb-4 text-white uppercase text-xs tracking-widest">Technical Foundation</p>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-code text-sky-400 mr-2"></i> Programming (Python, C/C++)</li>
+                            <li><i class="fas fa-brain text-sky-400 mr-2"></i> Computer Science Fundamentals</li>
+                            <li><i class="fas fa-calculator text-sky-400 mr-2"></i> Engineering Mathematics</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="font-bold mb-4 text-white uppercase text-xs tracking-widest">Business & Management</p>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-chart-line text-sky-400 mr-2"></i> Marketing Fundamentals</li>
+                            <li><i class="fas fa-users text-sky-400 mr-2"></i> User Research & Product Strategy</li>
+                            <li><i class="fas fa-lightbulb text-sky-400 mr-2"></i> Startup Strategy & Business Modeling</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -57,30 +95,30 @@
     <!-- Projects Section -->
     <section id="projects" class="py-32 px-6 bg-slate-900/30">
         <div class="max-w-6xl mx-auto">
-            <h3 class="text-3xl font-bold mb-16 flex items-center gap-4">
-                <span class="text-sky-400 font-mono text-xl">01.</span> Technical Projects
+            <h3 class="text-3xl font-bold mb-16 flex items-center gap-4 text-white">
+                <span class="text-sky-400 font-mono text-xl">02.</span> Featured Projects
             </h3>
 
-            <div class="grid lg:grid-cols-3 gap-8">
+            <div class="grid lg:grid-cols-2 gap-8">
                 
-                <!-- NEW PROJECT: BFS PATHFINDER -->
+                <!-- BFS PATHFINDER (THE ONE YOU IMPLEMENTED) -->
                 <div class="project-card p-8 rounded-xl">
                     <div class="flex justify-between items-start mb-6">
-                        <i class="fas fa-route text-4xl text-sky-400"></i>
-                        <i class="fab fa-github text-slate-400 text-xl"></i>
+                        <i class="fas fa-project-diagram text-4xl text-sky-400"></i>
+                        <span class="text-[10px] bg-sky-500/10 text-sky-400 px-2 py-1 rounded font-bold uppercase">Algorithm Visualization</span>
                     </div>
-                    <h4 class="text-xl font-bold mb-4 text-white">BFS Grid Pathfinder</h4>
+                    <h4 class="text-xl font-bold mb-4 text-white">BFS Shortest Path Visualizer</h4>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Implementation of the Breadth-First Search algorithm to find the shortest path on a 10x10 grid while avoiding user-defined obstacles.
+                        A Python-to-JavaScript implementation of the Breadth-First Search algorithm. It finds the shortest path on a 10x10 grid, navigating around obstacles you place.
                     </p>
-                    <button onclick="toggleDemo('demo-bfs')" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">Visualize Algorithm ↓</button>
+                    <button onclick="toggleDemo('demo-bfs')" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">Open Grid Visualizer ↓</button>
                     
-                    <div id="demo-bfs" class="demo-box">
-                        <p class="text-[10px] text-slate-500 mb-2 text-center underline">Click cells to toggle walls (#)</p>
-                        <div id="grid-container" class="bfs-grid mb-4"></div>
-                        <div class="flex gap-2">
-                            <button onclick="runBFS()" class="w-full bg-sky-500/20 text-sky-400 px-2 py-1 rounded text-[10px] font-bold hover:bg-sky-500/40">Find Path</button>
-                            <button onclick="resetBFS()" class="w-full bg-slate-700 text-white px-2 py-1 rounded text-[10px] font-bold hover:bg-slate-600">Reset</button>
+                    <div id="demo-bfs" class="demo-box text-center">
+                        <p class="text-[10px] text-slate-500 mb-4">Click cells to place walls (#). 'S' is Start, 'G' is Goal.</p>
+                        <div id="grid-container" class="bfs-grid mb-6"></div>
+                        <div class="flex gap-4 justify-center">
+                            <button onclick="runBFS()" class="bg-sky-500 text-slate-900 px-6 py-2 rounded text-[10px] font-bold hover:bg-sky-400 transition">Find Path</button>
+                            <button onclick="resetBFS()" class="border border-slate-700 text-white px-6 py-2 rounded text-[10px] font-bold hover:bg-slate-800 transition">Clear Grid</button>
                         </div>
                     </div>
                 </div>
@@ -88,32 +126,59 @@
                 <!-- Sentiment AI -->
                 <div class="project-card p-8 rounded-xl">
                     <div class="flex justify-between items-start mb-6">
-                        <i class="fas fa-brain text-4xl text-sky-400"></i>
+                        <i class="fas fa-face-smile text-4xl text-sky-400"></i>
+                        <span class="text-[10px] bg-sky-500/10 text-sky-400 px-2 py-1 rounded font-bold uppercase">Natural Language Logic</span>
                     </div>
-                    <h4 class="text-xl font-bold mb-4 text-white">Sentiment AI Dashboard</h4>
+                    <h4 class="text-xl font-bold mb-4 text-white">AI Sentiment Analyzer</h4>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        A real-time sentiment analysis tool for customer feedback. Analyzes text input to categorize user emotion.
+                        A frontend tool that analyzes text strings to determine customer emotion (Positive, Negative, or Neutral) using a rule-based logic system.
                     </p>
-                    <button onclick="toggleDemo('demo1')" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">Test AI Logic ↓</button>
+                    <button onclick="toggleDemo('demo1')" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">Test Sentiment Logic ↓</button>
                     <div id="demo1" class="demo-box">
-                        <input id="sentInput" oninput="runSentiment()" type="text" placeholder="Type a review..." class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-xs mb-2 text-white">
+                        <input id="sentInput" oninput="runSentiment()" type="text" placeholder="Type a customer review..." class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-xs mb-3 text-white">
                         <div id="sentResult" class="text-center font-bold text-xs py-2 rounded bg-slate-800">Result: Waiting...</div>
+                    </div>
+                </div>
+
+                <!-- LocalKart -->
+                <div class="project-card p-8 rounded-xl">
+                    <div class="flex justify-between items-start mb-6">
+                        <i class="fas fa-store text-4xl text-sky-400"></i>
+                        <span class="text-[10px] bg-sky-500/10 text-sky-400 px-2 py-1 rounded font-bold uppercase">Product Management</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 text-white">LocalKart Marketplace</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        A marketplace concept connecting local shops to customers. Features a Business Model Canvas and an interactive discovery UI prototype.
+                    </p>
+                    <button onclick="toggleDemo('demo2')" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">View Store Discovery ↓</button>
+                    <div id="demo2" class="demo-box">
+                        <div class="flex gap-2 mb-3">
+                            <button onclick="filterKart('All')" class="bg-slate-700 px-3 py-1 rounded text-[10px]">All</button>
+                            <button onclick="filterKart('Electronics')" class="bg-slate-700 px-3 py-1 rounded text-[10px]">Tech</button>
+                            <button onclick="filterKart('Food')" class="bg-slate-700 px-3 py-1 rounded text-[10px]">Food</button>
+                        </div>
+                        <div id="kartList" class="text-[10px] space-y-2">
+                            <div class="p-2 border-b border-slate-800 text-white">Bangalore Tech Hub - Electronics</div>
+                            <div class="p-2 border-b border-slate-800 text-white">Healthy Eats - Food</div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Hospital Manager -->
                 <div class="project-card p-8 rounded-xl">
                     <div class="flex justify-between items-start mb-6">
-                        <i class="fas fa-hospital-user text-4xl text-sky-400"></i>
+                        <i class="fas fa-notes-medical text-4xl text-sky-400"></i>
+                        <span class="text-[10px] bg-sky-500/10 text-sky-400 px-2 py-1 rounded font-bold uppercase">Software Dev</span>
                     </div>
                     <h4 class="text-xl font-bold mb-4 text-white">Hospital Resource Manager</h4>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Automated record management system designed to reduce manual errors in patient intake and resource allocation.
+                        Automated record management system built using Python to reduce manual errors in patient intake and bed allocation.
                     </p>
-                    <button onclick="toggleDemo('demo3')" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">Manage Beds ↓</button>
+                    <button onclick="toggleDemo('demo3')" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">Run Bed Manager ↓</button>
                     <div id="demo3" class="demo-box text-center">
-                        <div id="bedCount" class="text-2xl font-bold text-sky-400 mb-1">15</div>
-                        <button onclick="bookBed()" class="bg-sky-500/20 text-sky-400 px-4 py-2 rounded text-[10px] font-bold hover:bg-sky-500/40">Admit Patient</button>
+                        <div id="bedCount" class="text-3xl font-bold text-sky-400 mb-2">15</div>
+                        <p class="text-[10px] text-slate-500 mb-4 uppercase">Available Bed Count</p>
+                        <button onclick="bookBed()" class="bg-sky-500/20 text-sky-400 px-6 py-2 rounded text-[10px] font-bold hover:bg-sky-500/40 transition">Admit Patient</button>
                     </div>
                 </div>
 
@@ -121,21 +186,49 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-32 px-6">
-        <div class="max-w-2xl mx-auto text-center">
-            <h2 class="text-5xl font-bold mb-8 text-white">Let's Connect.</h2>
-            <a href="mailto:abhinavspillai7@gmail.com" class="block text-2xl font-bold text-white hover:text-sky-400 transition underline decoration-sky-500/30">abhinavspillai7@gmail.com</a>
+    <!-- Skills Section -->
+    <section id="skills" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-3xl font-bold mb-12">Technical Toolkit</h3>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="px-6 py-2 border border-slate-800 bg-slate-900/50 rounded-full text-sm">Python</span>
+                <span class="px-6 py-2 border border-slate-800 bg-slate-900/50 rounded-full text-sm">C/C++</span>
+                <span class="px-6 py-2 border border-slate-800 bg-slate-900/50 rounded-full text-sm">HTML/CSS</span>
+                <span class="px-6 py-2 border border-slate-800 bg-slate-900/50 rounded-full text-sm">JavaScript</span>
+                <span class="px-6 py-2 border border-slate-800 bg-slate-900/50 rounded-full text-sm">MySQL</span>
+                <span class="px-6 py-2 border border-slate-800 bg-slate-900/50 rounded-full text-sm">Git/GitHub</span>
+                <span class="px-6 py-2 border border-slate-800 bg-slate-900/50 rounded-full text-sm">Product Strategy</span>
+            </div>
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-5xl font-bold mb-8 text-white">Get In Touch.</h2>
+            <p class="text-slate-400 mb-12 text-lg">
+                I am actively seeking internship opportunities where I can apply my programming and product thinking skills. My inbox is always open.
+            </p>
+            <div class="space-y-6 mb-12">
+                <a href="mailto:abhinavspillai7@gmail.com" class="block text-2xl font-bold text-white hover:text-sky-400 transition underline decoration-sky-500/30 tracking-tight">abhinavspillai7@gmail.com</a>
+                <p class="text-slate-500 font-mono text-xl">+91 8150004710</p>
+            </div>
+            <a href="mailto:abhinavspillai7@gmail.com" class="px-12 py-5 bg-sky-500 text-slate-900 font-bold rounded uppercase tracking-widest hover:bg-sky-400 transition">Hire Me</a>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center font-mono text-[10px] text-slate-600 border-t border-slate-900">
+        Designed & Built by Abhinav S Pillai &copy; 2024 | Bangalore, India
+    </footer>
+
     <script>
+        // UI Helper
         function toggleDemo(id) {
             const el = document.getElementById(id);
             el.style.display = el.style.display === 'block' ? 'none' : 'block';
         }
 
-        /* --- BFS PROJECT LOGIC (Translated from your grid.py) --- */
+        /* --- BFS PROJECT LOGIC --- */
         const gridSize = 10;
         let startNode = [0, 0];
         let goalNode = [9, 9];
@@ -169,14 +262,11 @@
         }
 
         function runBFS() {
-            // Clean previous path
             document.querySelectorAll('.cell.path').forEach(c => c.classList.remove('path'));
-            
             let queue = [startNode];
             let visited = new Set();
             visited.add(`${startNode[0]},${startNode[1]}`);
             let cameFrom = {};
-
             let reached = false;
 
             while (queue.length > 0) {
@@ -185,12 +275,7 @@
                     reached = true;
                     break;
                 }
-
-                const neighbors = [
-                    [current[0]-1, current[1]], [current[0]+1, current[1]],
-                    [current[0], current[1]-1], [current[0], current[1]+1]
-                ];
-
+                const neighbors = [[current[0]-1, current[1]], [current[0]+1, current[1]], [current[0], current[1]-1], [current[0], current[1]+1]];
                 for (let [nr, nc] of neighbors) {
                     let key = `${nr},${nc}`;
                     if (nr >= 0 && nr < gridSize && nc >= 0 && nc < gridSize && !walls.has(key) && !visited.has(key)) {
@@ -200,47 +285,47 @@
                     }
                 }
             }
-
             if (reached) {
                 let curr = goalNode;
                 while (curr[0] !== startNode[0] || curr[1] !== startNode[1]) {
                     let key = `${curr[0]},${curr[1]}`;
-                    if (key !== `${goalNode[0]},${goalNode[1]}`) {
-                        document.getElementById(`cell-${curr[0]}-${curr[1]}`).classList.add('path');
-                    }
+                    if (key !== `${goalNode[0]},${goalNode[1]}`) document.getElementById(`cell-${curr[0]}-${curr[1]}`).classList.add('path');
                     curr = cameFrom[key];
                 }
-            } else {
-                alert("No path found!");
-            }
+            } else { alert("No path found through those walls!"); }
         }
 
         function resetBFS() {
             walls.clear();
             initGrid();
         }
-
-        // Initialize grid on load
         initGrid();
 
         /* --- OTHER PROJECT LOGIC --- */
         function runSentiment() {
             const val = document.getElementById('sentInput').value.toLowerCase();
             const res = document.getElementById('sentResult');
-            const pos = ['good', 'great', 'love', 'easy'];
-            const neg = ['bad', 'slow', 'hard', 'fail'];
+            const pos = ['good', 'great', 'love', 'easy', 'amazing', 'happy'];
+            const neg = ['bad', 'slow', 'hard', 'fail', 'worst', 'poor'];
             let score = 0;
             pos.forEach(w => { if(val.includes(w)) score++ });
             neg.forEach(w => { if(val.includes(w)) score-- });
-            if(score > 0) { res.innerText = "POSITIVE 😊"; res.className = "text-center font-bold text-xs py-2 rounded bg-green-500/20 text-green-400"; }
-            else if(score < 0) { res.innerText = "NEGATIVE 😡"; res.className = "text-center font-bold text-xs py-2 rounded bg-red-500/20 text-red-400"; }
-            else { res.innerText = "NEUTRAL 😐"; res.className = "text-center font-bold text-xs py-2 rounded bg-slate-700 text-slate-300"; }
+            if(score > 0) { res.innerText = "RESULT: POSITIVE 😊"; res.className = "text-center font-bold text-xs py-2 rounded bg-green-500/20 text-green-400"; }
+            else if(score < 0) { res.innerText = "RESULT: NEGATIVE 😡"; res.className = "text-center font-bold text-xs py-2 rounded bg-red-500/20 text-red-400"; }
+            else { res.innerText = "RESULT: NEUTRAL 😐"; res.className = "text-center font-bold text-xs py-2 rounded bg-slate-700 text-slate-300"; }
+        }
+
+        const shops = [{n: "City Electronics", c: "Electronics"}, {n: "Fresh Farm", c: "Food"}, {n: "Gadget Hub", c: "Electronics"}, {n: "Curry House", c: "Food"}];
+        function filterKart(cat) {
+            const list = document.getElementById('kartList');
+            const filtered = cat === 'All' ? shops : shops.filter(i => i.c === cat);
+            list.innerHTML = filtered.map(i => `<div class="p-2 border-b border-slate-800 text-white">${i.n} - <span class="text-sky-400">${i.c}</span></div>`).join('');
         }
 
         let beds = 15;
         function bookBed() {
             if(beds > 0) { beds--; document.getElementById('bedCount').innerText = beds; }
-            else { alert("Full capacity!"); }
+            else { alert("Hospital full capacity!"); }
         }
     </script>
 </body>
