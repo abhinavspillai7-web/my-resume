@@ -36,7 +36,7 @@
         <div class="max-w-4xl mx-auto">
             <p class="text-sky-400 font-mono mb-4">Hello, my name is</p>
             <h1 class="text-6xl md:text-8xl font-extrabold mb-6 text-white">Abhinav S Pillai.</h1>
-            <h2 class="text-4xl md:text-6xl font-bold text-slate-400 mb-8 leading-tight">Aspiring Product Manager & Developer.</h2>
+            <h2 class="text-4xl md:text-6xl font-bold text-slate-400 mb-8 leading-tight">Aspiring AI/ML Engineer & Developer.</h2>
             <p class="text-lg text-slate-400 max-w-xl mb-12">
                 First-year CSE student at Amity University. I bridge the gap between user research, product strategy, and functional code.
             </p>
@@ -62,12 +62,21 @@
                     <div class="text-slate-400 font-mono mt-2 md:mt-0">2025 — 2029</div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-slate-300">
-                    <div>
+                    <div class="md:col-span-2">
                         <p class="font-bold mb-2 text-white">Core Focus Areas:</p>
-                        <ul class="space-y-1 text-sm">
-                            <li><i class="fas fa-check text-sky-400 mr-2"></i> Computer Science Fundamentals</li>
-                            <li><i class="fas fa-check text-sky-400 mr-2"></i> Python & C++ Programming</li>
-                            <li><i class="fas fa-check text-sky-400 mr-2"></i> Mathematics for AI</li>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 text-sm">
+                        <li><i class="fas fa-check text-sky-400 mr-2"></i> Computer Science Fundamentals</li>
+                        <li><i class="fas fa-check text-sky-400 mr-2"></i> Python &amp; C++ Programming</li>
+                        <li><i class="fas fa-check text-sky-400 mr-2"></i> Mathematics for AI</li>
+                        <li><i class="fas fa-check text-sky-400 mr-2"></i> Machine Learning (Linear Regression, TF-IDF, Cosine Similarity)</li>
+                        <li><i class="fas fa-check text-sky-400 mr-2"></i> Recommendation Systems</li>
+                        <li><i class="fas fa-check text-sky-400 mr-2"></i> Data Cleaning &amp; Preprocessing</li>
+                        <li><i class="fas fa-check text-sky-400 mr-2"></i> Model Evaluation (MAE, R²)</li>
+                        <li><i class="fas fa-check text-sky-400 mr-2"></i> Pandas, NumPy &amp; Scikit-learn</li>
+                        <li><i class="fas fa-check text-sky-400 mr-2"></i> ML Apps with Streamlit &amp; Joblib</li>
+                        <li><i class="fas fa-check text-sky-400 mr-2"></i> HTML &amp; CSS Basics</li>
+                        <li><i class="fas fa-check text-sky-400 mr-2"></i> Git &amp; GitHub</li>
+                        <li><i class="fas fa-check text-sky-400 mr-2"></i> Linux / Ubuntu Basics</li>
                         </ul>
                     </div>
                     <div>
@@ -91,24 +100,6 @@
             </h3>
 
             <div class="grid lg:grid-cols-3 gap-8">
-                <!-- Project 1: AI/ML -->
-                <div class="project-card p-8 rounded-xl">
-                    <div class="flex justify-between items-start mb-6">
-                        <i class="fas fa-brain text-4xl text-sky-400"></i>
-                        <i class="fab fa-github text-slate-400 text-xl"></i>
-                    </div>
-                    <h4 class="text-xl font-bold mb-4 text-white">Sentiment AI Dashboard</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        A real-time sentiment analysis tool for customer feedback. Analyzes text input to categorize user emotion.
-                    </p>
-                    <button onclick="toggleDemo('demo1')" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">Test AI Logic ↓</button>
-                    
-                    <div id="demo1" class="demo-box">
-                        <input id="sentInput" oninput="runSentiment()" type="text" placeholder="Type a review (e.g. 'This is great')..." class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-xs mb-2 text-white">
-                        <div id="sentResult" class="text-center font-bold text-xs py-2 rounded bg-slate-800">Result: Waiting...</div>
-                    </div>
-                </div>
-
                 <!-- Project 2: Frontend -->
                 <div class="project-card p-8 rounded-xl">
                     <div class="flex justify-between items-start mb-6">
@@ -134,23 +125,42 @@
                     </div>
                 </div>
 
-                <!-- Project 3: Problem Solving -->
+                <!-- Project: Movie Recommender -->
                 <div class="project-card p-8 rounded-xl">
                     <div class="flex justify-between items-start mb-6">
-                        <i class="fas fa-hospital-user text-4xl text-sky-400"></i>
-                        <i class="fab fa-github text-slate-400 text-xl"></i>
+                        <i class="fas fa-film text-4xl text-sky-400"></i>
+                        <a href="https://github.com/abhinavspillai7-web/movie-recommender" target="_blank" rel="noopener"><i class="fab fa-github text-slate-400 text-xl hover:text-sky-400 transition"></i></a>
                     </div>
-                    <h4 class="text-xl font-bold mb-4 text-white">Hospital Resource Manager</h4>
+                    <h4 class="text-xl font-bold mb-4 text-white">Movie Recommender</h4>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Automated record management system designed to reduce manual errors in patient intake and resource allocation.
+                        Recommends movies based on how similar they are to ones you like.
                     </p>
-                    <button onclick="toggleDemo('demo3')" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">Manage Beds ↓</button>
-                    
-                    <div id="demo3" class="demo-box text-center">
-                        <div id="bedCount" class="text-2xl font-bold text-sky-400 mb-1">15</div>
-                        <div class="text-[10px] uppercase text-slate-500 mb-3">Available Hospital Beds</div>
-                        <button onclick="bookBed()" class="bg-sky-500/20 text-sky-400 px-4 py-2 rounded text-[10px] font-bold hover:bg-sky-500/40 transition">Admit Patient</button>
+                    <a href="https://github.com/abhinavspillai7-web/movie-recommender" target="_blank" rel="noopener" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">View on GitHub &rarr;</a>
+                </div>
+
+                <!-- Project: Student Performance Predictor -->
+                <div class="project-card p-8 rounded-xl">
+                    <div class="flex justify-between items-start mb-6">
+                        <i class="fas fa-graduation-cap text-4xl text-sky-400"></i>
+                        <a href="https://github.com/abhinavspillai7-web/student-performance-predictor" target="_blank" rel="noopener"><i class="fab fa-github text-slate-400 text-xl hover:text-sky-400 transition"></i></a>
                     </div>
+                    <h4 class="text-xl font-bold mb-4 text-white">Student Performance Predictor</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Predicts student marks from performance-related data.
+                    </p>
+                    <a href="https://github.com/abhinavspillai7-web/student-performance-predictor" target="_blank" rel="noopener" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">View on GitHub &rarr;</a>
+                </div>
+                <!-- Project: Expense Tracker -->
+                <div class="project-card p-8 rounded-xl">
+                    <div class="flex justify-between items-start mb-6">
+                        <i class="fas fa-wallet text-4xl text-sky-400"></i>
+                        <a href="https://github.com/abhinavspillai7-web/expense" target="_blank" rel="noopener"><i class="fab fa-github text-slate-400 text-xl hover:text-sky-400 transition"></i></a>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 text-white">Expense Tracker</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Tracks your expenses so you can see where your money goes.
+                    </p>
+                    <a href="https://github.com/abhinavspillai7-web/expense" target="_blank" rel="noopener" class="text-sky-400 text-xs font-bold uppercase tracking-widest hover:underline">View on GitHub &rarr;</a>
                 </div>
             </div>
         </div>
